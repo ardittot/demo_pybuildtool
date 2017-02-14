@@ -1,0 +1,82 @@
+django_blog:
+
+    options:
+        pylint_work_dir: "{_1}/"
+        pylint_config_file: etc/pylint.rc
+        pylint_plugins:
+            - pylint_django
+
+
+    django_blog:
+
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+            token_out: "{_1}:{_2}:{_3}"
+
+
+    content_news:
+
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+            token_out: "{_1}:{_2}:{_3}"
+
+
+    django_test:
+        options:
+            work_dir: "{_1}/"
+        token_in:
+            - "{_1}:django_blog:pylint"
+            - "{_1}:content_news:pylint"
+        token_out: "{_1}:{_2}"
+
+
+    documentation:
+
+        pylint:
+            raw_file_in: "{_1}/{_2}/conf.py"
+            token_out: "{_1}:{_2}:{_3}"
+
+
+        restructuredtext-lint:
+            raw_file_in: "{_1}/{_2}/**/*.rst"
+            token_out: "{_1}:{_2}:{_3}"
+
+
+        sphinx-apidoc:
+            options:
+                output_dir: "{_1}/{_2}/"
+                project_dir: "{_1}/"
+                exclude:
+                    - "{_1}/*/tests.py"
+                    - "{_1}/*/urls.py"
+                    - "{_1}/*/migrations/"
+                    - "{_1}/{_1}/settings.py"
+                    - "{_1}/{_1}/wsgi.py"
+            token_in: "{_1}:django_test"
+            token_out: "{_1}:{_2}:{_3}"
+
+
+        sphinx-build:
+            options:
+                source_dir: "{_1}/{_2}/"
+                output_dir: "public/docs/{_1}/"
+                temp_dir: "tmp/sphinx/{_1}/"
+            raw_depend_in:
+                - "{_1}/{_2}/*.rst"
+                - "{_1}/{_2}/conf.py"
+            token_in:
+                - "{_1}:{_2}:pylint"
+                - "{_1}:{_2}:restructuredtext-lint"
+                - "{_1}:{_2}:sphinx-apidoc"
+            token_out: "{_1}:{_2}:{_3}"
+
+
+build_tools:
+
+    options:
+        pylint_work_dir: "{_1}/"
+        pylint_config_file: etc/pylint.rc
+
+    pylint:
+        raw_file_in: "{_1}/*.py"
+        token_out: "{_1}:{_2}"

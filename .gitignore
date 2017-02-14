@@ -1,0 +1,35 @@
+/.virtualenv/
+/python_modules
+/build.yml
+/wscript
+/requirements.txt
+/public/
+/tmp/
+
+
+## git
+
+*.orig
+
+
+## libreoffice
+
+/.~lock.*
+
+
+## python
+
+*.pyc
+__pycache__/
+
+
+## vim
+
+*.swo
+*.swp
+
+
+## waf
+
+/.BUILD/
+/.lock-waf*

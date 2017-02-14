@@ -1,0 +1,28 @@
+{
+    "package_name": "demo_pybuildtool",
+    "default_project": "blog",
+    "default_variant": "development",
+    "__default_variant": "production",
+    "python_version": "3.5",
+    "virtualenv_dir": ".virtualenv",
+    "modules": [
+        "fireh_runner.modules.setup",
+        "fireh_runner.modules.pip",
+        "fireh_runner.modules.waf",
+        "fireh_runner.modules.django",
+        "fireh_runner.modules.sphinx"
+    ],
+    "setup_modules": [
+        "fireh_runner.setup_modules.git",
+        "fireh_runner.setup_modules.python",
+        "fireh_runner.setup_modules.pybuildtool"
+    ],
+    "configuration": {
+        "development": {
+            "blog": {
+                "work_dir": "django_blog"
+            }
+        }
+    },
+    "waf_version": "1.9.7"
+}

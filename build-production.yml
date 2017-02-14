@@ -1,0 +1,30 @@
+django_blog:
+
+    documentation:
+
+        sphinx-apidoc:
+            options:
+                output_dir: "{_1}/{_2}/"
+                project_dir: "{_1}/"
+                exclude:
+                    - "{_1}/*/tests.py"
+                    - "{_1}/*/urls.py"
+                    - "{_1}/*/migrations/"
+                    - "{_1}/{_1}/settings.py"
+                    - "{_1}/{_1}/wsgi.py"
+            raw_depend_in:
+                - "{_1}/**/*.py"
+            token_out: "{_1}:{_2}:{_3}"
+
+
+        sphinx-build:
+            options:
+                source_dir: "{_1}/{_2}/"
+                output_dir: "public/docs/"
+                temp_dir: "tmp/sphinx/"
+            raw_depend_in:
+                - "{_1}/{_2}/*.rst"
+                - "{_1}/{_2}/conf.py"
+            token_in:
+                - "{_1}:{_2}:sphinx-apidoc"
+            token_out: "{_1}:{_2}:{_3}"
