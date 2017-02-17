@@ -38,6 +38,12 @@ django_blog:
 
 
         restructuredtext-lint:
+            options:
+                ignore_directives:
+                    - automodule
+                    - toctree
+                ignore_roles:
+                    - ref
             raw_file_in: "{_1}/{_2}/**/*.rst"
             token_out: "{_1}:{_2}:{_3}"
 
@@ -59,8 +65,8 @@ django_blog:
         sphinx-build:
             options:
                 source_dir: "{_1}/{_2}/"
-                output_dir: "public/docs/{_1}/"
-                temp_dir: "tmp/sphinx/{_1}/"
+                output_dir: "public/docs/"
+                temp_dir: "tmp/sphinx/"
             raw_depend_in:
                 - "{_1}/{_2}/*.rst"
                 - "{_1}/{_2}/conf.py"

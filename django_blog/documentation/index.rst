@@ -12,7 +12,6 @@ Welcome to Demo Django Blog's documentation!
 
 
 
-
 Indices and tables
 ==================
 

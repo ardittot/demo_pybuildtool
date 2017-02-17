@@ -22,9 +22,9 @@ documentation root, use os.path.abspath to make it absolute, like shown here.
 import os
 import sys
 
-with open(os.path.abspath('../../documentation/conf.py')) as f:
-    _code = compile(f.read(), 'conf.py', 'exec')
-    exec(_code)
+#with open(os.path.abspath('../../documentation/conf.py')) as f:
+#    _code = compile(f.read(), 'conf.py', 'exec')
+#    exec(_code)
 
 sys.path.insert(0, os.path.abspath('..'))
 
